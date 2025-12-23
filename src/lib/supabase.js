@@ -6,13 +6,26 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
 // Validate environment variables
 if (!supabaseUrl || !supabaseAnonKey) {
+  const isProduction = import.meta.env.PROD
+  const errorMessage = isProduction
+    ? 'Missing Supabase configuration. Please check GitHub Secrets in repository settings.'
+    : 'Missing Supabase environment variables. Please check your .env file.'
+  
   console.error('❌ Missing Supabase environment variables!')
-  console.error('Please check your .env file.')
   console.error('URL:', supabaseUrl ? '✅' : '❌ Missing')
   console.error('Anon Key:', supabaseAnonKey ? '✅' : '❌ Missing')
-  throw new Error(
-    'Missing Supabase environment variables. Please check your .env file.'
-  )
+  
+  if (isProduction) {
+    console.error('')
+    console.error('For GitHub Pages deployment:')
+    console.error('1. Go to your repository → Settings → Secrets and variables → Actions')
+    console.error('2. Add these secrets:')
+    console.error('   - VITE_SUPABASE_URL')
+    console.error('   - VITE_SUPABASE_ANON_KEY')
+    console.error('3. Re-run the deployment workflow')
+  }
+  
+  throw new Error(errorMessage)
 }
 
 // Log connection info (only in development)
