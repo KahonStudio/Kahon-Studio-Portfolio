@@ -1,0 +1,121 @@
+.platforms {
+  background: var(--bg-primary);
+  border-top: 1px solid rgba(100, 255, 218, 0.1);
+  border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+  opacity: 0;
+  animation: fade-in 0.8s ease-out 0.2s forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.platforms-content {
+  text-align: center;
+}
+
+.platforms-title {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--slate);
+  margin-bottom: 2rem;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Fira Mono', 'Droid Sans Mono', 'Source Code Pro', monospace;
+}
+
+.platforms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.platform-card {
+  padding: 2rem 1.5rem;
+  background: var(--navy);
+  border-radius: 0.25rem;
+  border: 1px solid rgba(100, 255, 218, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  opacity: 0;
+  animation: fade-in-scale 0.6s ease-out forwards;
+}
+
+.platform-card:nth-child(1) {
+  animation-delay: 0.3s;
+}
+
+.platform-card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.platform-card:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+.platform-card:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+@keyframes fade-in-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.platform-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--green);
+  background: var(--navy-light);
+}
+
+.platform-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+  color: var(--green);
+  display: flex;
+  justify-content: center;
+}
+
+.platform-card:hover .platform-icon {
+  transform: translateY(-3px);
+}
+
+.platform-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--slate-lighter);
+  margin-bottom: 0.5rem;
+}
+
+.platform-description {
+  font-size: 0.8125rem;
+  color: var(--slate);
+  font-weight: 400;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Fira Mono', 'Droid Sans Mono', 'Source Code Pro', monospace;
+}
+
+@media (max-width: 768px) {
+  .platforms-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .platform-card {
+    padding: 1.5rem 1rem;
+  }
+}
+

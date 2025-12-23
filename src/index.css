@@ -1,0 +1,124 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Dark blue theme inspired by Brittany Chiang's portfolio */
+  --navy-dark: #0a192f;
+  --navy: #112240;
+  --navy-light: #233554;
+  --slate: #8892b0;
+  --slate-light: #a8b2d1;
+  --slate-lighter: #ccd6f6;
+  --white: #e6f1ff;
+  --green: #64ffda;
+  --green-tint: rgba(100, 255, 218, 0.1);
+  
+  /* Legacy color mappings for compatibility */
+  --primary-color: #64ffda;
+  --primary-dark: #52e0c4;
+  --secondary-color: #64ffda;
+  --accent-color: #64ffda;
+  --text-primary: #ccd6f6;
+  --text-secondary: #8892b0;
+  --bg-primary: #0a192f;
+  --bg-secondary: #112240;
+  --bg-dark: #020c1b;
+  --border-color: rgba(100, 255, 218, 0.1);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+  --shadow-green: 0 10px 30px -10px rgba(100, 255, 218, 0.3);
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* Smooth scrolling with offset for fixed header */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: 6rem 0;
+}
+
+/* Numbered section styling inspired by Brittany Chiang */
+.section-number {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Fira Mono', 'Droid Sans Mono', 'Source Code Pro', monospace;
+  font-size: 0.875rem;
+  color: var(--green);
+  margin-right: 1rem;
+  font-weight: 400;
+}
+
+.section-number::after {
+  content: '';
+  display: inline-block;
+  width: 200px;
+  height: 1px;
+  background-color: var(--navy-light);
+  margin-left: 1rem;
+  position: relative;
+  top: -1px;
+}
+
+@media (max-width: 768px) {
+  .section-number::after {
+    width: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+  
+  .section {
+    padding: 3rem 0;
+  }
+}
+
