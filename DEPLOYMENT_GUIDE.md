@@ -61,9 +61,14 @@ Your site needs environment variables to work. Add them as GitHub Secrets:
 
 - **VITE_SUPABASE_URL** - Your Supabase project URL
 - **VITE_SUPABASE_ANON_KEY** - Your Supabase anonymous key
-- **VITE_EMAILJS_SERVICE_ID** - Your EmailJS service ID (if using email)
-- **VITE_EMAILJS_TEMPLATE_ID** - Your EmailJS template ID (if using email)
-- **VITE_EMAILJS_PUBLIC_KEY** - Your EmailJS public key (if using email)
+
+### Optional Secrets (for email notifications):
+
+- **VITE_EMAILJS_SERVICE_ID** - Your EmailJS service ID (only if you set up EmailJS)
+- **VITE_EMAILJS_TEMPLATE_ID** - Your EmailJS template ID (only if you set up EmailJS)
+- **VITE_EMAILJS_PUBLIC_KEY** - Your EmailJS public key (only if you set up EmailJS)
+
+**Note:** EmailJS secrets are optional. Your site will work without them - the contact form will still save to Supabase, but you won't receive email notifications until you configure EmailJS (see `EMAILJS_SETUP.md`).
 
 ### How to Add Secrets:
 

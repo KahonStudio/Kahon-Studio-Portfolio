@@ -34,25 +34,31 @@ git push -u origin main
 3. Under **Source**, select **GitHub Actions**
 4. Click **Save**
 
-## Step 5: Add Secrets (IMPORTANT!)
+## Step 5: Add Secrets (REQUIRED)
 
 1. Go to **Settings** → **Secrets and variables** → **Actions**
-2. Click **New repository secret** and add:
+2. Click **New repository secret** and add these **REQUIRED** secrets:
 
    - Name: `VITE_SUPABASE_URL`
-     Value: (from your `.env` file)
+     Value: `https://gcyxjsiryjcldnppixcl.supabase.co`
 
    - Name: `VITE_SUPABASE_ANON_KEY`
-     Value: (from your `.env` file)
+     Value: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdjeXhqc2lyeWpjbGRucHBpeGNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY0Njk0MzIsImV4cCI6MjA4MjA0NTQzMn0.gmipywdk_FiQNwlXCYNBW0gnV6XR35S6Ty4JmiYJS54`
+
+### Optional: EmailJS Secrets (for email notifications)
+
+If you want to receive email notifications when someone submits the contact form, follow the `EMAILJS_SETUP.md` guide first, then add these optional secrets:
 
    - Name: `VITE_EMAILJS_SERVICE_ID`
-     Value: (from your `.env` file, if you set up EmailJS)
+     Value: (your EmailJS service ID)
 
    - Name: `VITE_EMAILJS_TEMPLATE_ID`
-     Value: (from your `.env` file, if you set up EmailJS)
+     Value: (your EmailJS template ID)
 
    - Name: `VITE_EMAILJS_PUBLIC_KEY`
-     Value: (from your `.env` file, if you set up EmailJS)
+     Value: (your EmailJS public key)
+
+**Note:** Your site will work fine without EmailJS secrets. The contact form will still save submissions to Supabase, but you won't receive email notifications until you set up EmailJS.
 
 ## Step 6: Trigger Deployment
 
