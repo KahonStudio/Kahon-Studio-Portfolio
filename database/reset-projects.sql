@@ -107,3 +107,4 @@ INSERT INTO projects (title, description, category, tags, image_urls, project_ur
   6
 );
 
+

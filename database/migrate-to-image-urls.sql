@@ -28,3 +28,4 @@ WHERE image_urls IS NULL OR array_length(image_urls, 1) IS NULL;
 -- Uncomment the line below ONLY after you've verified everything works:
 -- ALTER TABLE projects DROP COLUMN image_url;
 
+

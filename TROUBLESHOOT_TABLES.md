@@ -124,3 +124,4 @@ This should return 3 rows if tables exist.
 3. Try refreshing your browser
 4. Check Supabase logs for errors
 
+

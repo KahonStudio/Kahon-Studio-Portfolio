@@ -162,3 +162,4 @@ Your website is now dynamic and connected to Supabase. You can:
 
 Happy coding! 🚀
 
+

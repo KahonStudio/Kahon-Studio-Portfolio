@@ -92,3 +92,4 @@ If you can't find the anon key:
 3. Try refreshing the page
 4. Look for "API" or "Keys" in different sections of Settings
 
+

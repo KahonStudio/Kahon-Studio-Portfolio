@@ -124,3 +124,4 @@ Edit `src/components/Projects.jsx` and add image paths to your projects:
 Enjoy showcasing your work! 🎉
 
 
+

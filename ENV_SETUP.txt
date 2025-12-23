@@ -12,3 +12,4 @@ To edit it:
 The file is located at:
 C:\Users\James\Documents\GitHub\Kahon Studio Portfolio\.env
 
+

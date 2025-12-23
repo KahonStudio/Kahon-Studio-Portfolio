@@ -67,3 +67,4 @@ To use your own images later:
 
 The script uses `DELETE FROM projects;` which will remove ALL existing projects. Make sure you're okay with this before running it!
 
+

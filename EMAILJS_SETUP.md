@@ -99,3 +99,4 @@ npm run dev
 
 The EmailJS Public Key is safe to use in frontend code - it's designed to be public. However, make sure your `.env` file is in `.gitignore` (which it already is) to prevent committing sensitive information.
 
+
