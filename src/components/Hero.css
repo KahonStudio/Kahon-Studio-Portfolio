@@ -274,25 +274,105 @@
 @media (max-width: 768px) {
   .hero {
     min-height: 90vh;
+    padding-top: 100px;
+    padding-bottom: 2rem;
   }
 
   .hero-content {
-    text-align: center;
+    text-align: left;
+    padding: 0 1rem;
+    width: 100%;
+  }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .hero-title .greeting {
+    font-size: clamp(0.875rem, 3vw, 1rem);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .title-line {
+    display: block;
+    white-space: normal;
+    border-right: none;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .title-line:nth-child(2),
+  .title-line:nth-child(3) {
+    animation: none;
+    width: auto;
+    opacity: 1;
+  }
+
+  .gradient-text {
+    display: block;
+    margin-top: 0.25rem;
   }
 
   .hero-subtitle {
     max-width: 100%;
+    font-size: clamp(0.9375rem, 3.5vw, 1.0625rem);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .hero-buttons {
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
     align-items: stretch;
+    margin-top: 0.5rem;
   }
 
   .btn {
     width: 100%;
     text-align: center;
+    padding: 0.875rem 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  .scroll-indicator {
+    bottom: 1.5rem;
+  }
+
+  .scroll-icon {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding-top: 90px;
+    padding-bottom: 1.5rem;
+  }
+
+  .hero-content {
+    padding: 0 0.75rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.5rem, 7vw, 2rem);
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(0.875rem, 3vw, 1rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.8125rem;
   }
 }
 

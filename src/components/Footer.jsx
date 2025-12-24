@@ -1,5 +1,5 @@
 import { HiHome, HiUserGroup, HiFolderOpen, HiMail } from 'react-icons/hi'
-import { FaLinkedin, FaGithub, FaTwitter, FaInstagram } from 'react-icons/fa'
+import { FaLinkedin, FaFacebook } from 'react-icons/fa'
 import './Footer.css'
 
 const Footer = () => {
@@ -26,10 +26,8 @@ const Footer = () => {
             <div className="footer-column">
               <h4 className="footer-title">Connect</h4>
               <ul className="footer-list">
-                <li><a href="#" target="_blank" rel="noopener noreferrer"><FaLinkedin className="footer-link-icon" /> LinkedIn</a></li>
-                <li><a href="#" target="_blank" rel="noopener noreferrer"><FaGithub className="footer-link-icon" /> GitHub</a></li>
-                <li><a href="#" target="_blank" rel="noopener noreferrer"><FaTwitter className="footer-link-icon" /> Twitter</a></li>
-                <li><a href="#" target="_blank" rel="noopener noreferrer"><FaInstagram className="footer-link-icon" /> Instagram</a></li>
+                <li><a href="https://www.facebook.com/kahongames" target="_blank" rel="noopener noreferrer"><FaFacebook className="footer-link-icon" /> Facebook</a></li>
+                <li><a href="https://www.linkedin.com/in/jamesibay" target="_blank" rel="noopener noreferrer"><FaLinkedin className="footer-link-icon" /> LinkedIn</a></li>
               </ul>
             </div>
           </div>

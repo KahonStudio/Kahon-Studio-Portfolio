@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { HiCode, HiColorSwatch, HiLightBulb, HiChip, HiTemplate, HiServer } from 'react-icons/hi'
 import { supabase } from '../lib/supabase'
 import './Team.css'
@@ -31,6 +31,8 @@ const Team = () => {
     }
   ]
 
+  const gridRef = useRef(null)
+
   // Fetch team members from Supabase
   useEffect(() => {
     const fetchTeamMembers = async () => {
@@ -50,7 +52,6 @@ const Team = () => {
           setTeamMembers(hardcodedMembers)
         }
       } catch (err) {
-        console.error('Error fetching team members:', err)
         // Fallback to hardcoded on error
         setTeamMembers(hardcodedMembers)
       } finally {
@@ -61,6 +62,38 @@ const Team = () => {
     fetchTeamMembers()
   }, [])
 
+  useEffect(() => {
+    if (!gridRef.current) return
+
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const cards = entry.target.querySelectorAll('.team-card')
+          cards.forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('fade-in-visible')
+            }, index * 100)
+          })
+        }
+      })
+    }, observerOptions)
+
+    if (gridRef.current) {
+      observer.observe(gridRef.current)
+    }
+
+    return () => {
+      if (gridRef.current) {
+        observer.unobserve(gridRef.current)
+      }
+    }
+  }, [teamMembers])
+
   return (
     <section id="team" className="team section">
       <div className="container">
@@ -68,9 +101,9 @@ const Team = () => {
           <span className="section-number">01.</span>
           <h2 className="section-title">Our Team</h2>
         </div>
-        <div className="team-grid">
+        <div ref={gridRef} className="team-grid">
           {teamMembers.map((member, index) => (
-            <div key={index} className="team-card">
+            <div key={index} className="team-card fade-in-up">
               <div className="team-avatar">
                 <div className="avatar-placeholder">
                   <span>{member.name.split(' ').map(n => n[0]).join('')}</span>

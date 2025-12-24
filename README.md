@@ -57,37 +57,31 @@ The built files will be in the `dist` directory.
 
 ## Deploying to GitHub Pages
 
-1. Make sure you have `gh-pages` installed (already included in devDependencies)
+For detailed deployment instructions, see the [docs folder](docs/).
 
-2. Update the `base` path in `vite.config.js` to match your repository name:
-   - If your repo is `username/Kahon-Studio-Portfolio`, keep it as `/Kahon-Studio-Portfolio/`
-   - If your repo name is different, update accordingly
+**Quick Start:**
+1. Follow the [Quick Deploy Guide](docs/QUICK_DEPLOY.md)
+2. Add required secrets (see [GitHub Secrets Setup](docs/GITHUB_SECRETS_SETUP.md))
+3. Push to GitHub - deployment happens automatically via GitHub Actions
 
-3. Deploy to GitHub Pages:
-```bash
-npm run deploy
-```
+Your site will be available at `https://username.github.io/Kahon-Studio-Portfolio/`
 
-4. Go to your repository settings on GitHub:
-   - Navigate to Settings > Pages
-   - Under "Source", select "gh-pages" branch
-   - Your site will be available at `https://username.github.io/Kahon-Studio-Portfolio/`
+**Troubleshooting?** Check [Troubleshoot Deployment](docs/TROUBLESHOOT_DEPLOYMENT.md) or [Fix Missing Secrets](docs/FIX_MISSING_SECRETS.md)
 
 ## Project Structure
 
 ```
-src/
-├── components/       # React components
-│   ├── Header.jsx
-│   ├── Hero.jsx
-│   ├── About.jsx
-│   ├── Team.jsx
-│   ├── Projects.jsx
-│   ├── Contact.jsx
-│   └── Footer.jsx
-├── App.jsx          # Main app component
-├── main.jsx         # Entry point
-└── index.css        # Global styles
+├── src/                    # Source code
+│   ├── components/         # React components
+│   ├── lib/                # Utilities (Supabase client)
+│   ├── App.jsx            # Main app component
+│   └── main.jsx           # Entry point
+├── docs/                   # Documentation
+│   ├── QUICK_DEPLOY.md    # Deployment guide
+│   ├── GITHUB_SECRETS_SETUP.md
+│   └── ...                 # Other guides
+├── public/                 # Static assets
+└── dist/                   # Build output (generated)
 ```
 
 ## Technologies Used

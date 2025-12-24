@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { HiCollection, HiDeviceMobile, HiGlobeAlt, HiChat, HiLightningBolt, HiPhotograph } from 'react-icons/hi'
 import { FaGamepad } from 'react-icons/fa'
 import { supabase } from '../lib/supabase'
@@ -22,6 +22,9 @@ const Projects = () => {
   }
 
   // Fetch projects from Supabase
+  const sectionRef = useRef(null)
+  const gridRef = useRef(null)
+
   useEffect(() => {
     const fetchProjects = async () => {
       try {
@@ -58,7 +61,6 @@ const Projects = () => {
         setProjects(sortedProjects || [])
         setError(null)
       } catch (err) {
-        console.error('Error fetching projects:', err)
         // Check if it's a "table doesn't exist" error
         if (err.message && (err.message.includes('does not exist') || err.message.includes('Could not find the table'))) {
           setError('Projects table not found. Please create the tables in Supabase.')
@@ -86,6 +88,40 @@ const Projects = () => {
   const filteredProjects = activeFilter === 'all' 
     ? projects 
     : projects.filter(project => project.category === activeFilter)
+
+  useEffect(() => {
+    if (!gridRef.current) return
+
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in-visible')
+          // Animate child cards with stagger
+          const cards = entry.target.querySelectorAll('.project-card')
+          cards.forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('fade-in-visible')
+            }, index * 50)
+          })
+        }
+      })
+    }, observerOptions)
+
+    if (gridRef.current) {
+      observer.observe(gridRef.current)
+    }
+
+    return () => {
+      if (gridRef.current) {
+        observer.unobserve(gridRef.current)
+      }
+    }
+  }, [projects, activeFilter])
 
   const openModal = (project) => {
     setSelectedProject(project)
@@ -155,7 +191,7 @@ const Projects = () => {
         )}
 
         {!loading && !error && projects.length > 0 && (
-          <div className="projects-grid">
+          <div ref={gridRef} className="projects-grid">
             {filteredProjects.map(project => {
               const IconComponent = project.icon
               const hasImages = project.images && project.images.length > 0

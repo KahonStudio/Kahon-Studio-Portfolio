@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { HiMail, HiBriefcase, HiPaperAirplane } from 'react-icons/hi'
 import emailjs from '@emailjs/browser'
 import { supabase } from '../lib/supabase'
@@ -13,6 +13,8 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState(null) // 'success' or 'error'
   const [submitMessage, setSubmitMessage] = useState('')
+  const infoRef = useRef(null)
+  const formRef = useRef(null)
 
   const handleChange = (e) => {
     setFormData({
@@ -69,9 +71,7 @@ const Contact = () => {
             publicKey
           )
         } catch (emailError) {
-          // Log email error but don't fail the form submission
-          console.error('Email notification failed:', emailError)
-          // Form submission still succeeds even if email fails
+          // Email error silently ignored - form submission still succeeds
         }
       }
 
@@ -80,13 +80,34 @@ const Contact = () => {
       setSubmitMessage('Thank you for your message! We\'ll get back to you soon.')
       setFormData({ name: '', email: '', message: '' })
     } catch (error) {
-      console.error('Error submitting form:', error)
       setSubmitStatus('error')
       setSubmitMessage('Sorry, there was an error submitting your message. Please try again.')
     } finally {
       setIsSubmitting(false)
     }
   }
+
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in-visible')
+        }
+      })
+    }, observerOptions)
+
+    const elements = [infoRef.current, formRef.current].filter(Boolean)
+    elements.forEach(el => observer.observe(el))
+
+    return () => {
+      elements.forEach(el => observer.unobserve(el))
+    }
+  }, [])
 
   return (
     <section id="contact" className="contact section">
@@ -96,7 +117,7 @@ const Contact = () => {
           <h2 className="section-title">Get In Touch</h2>
         </div>
         <div className="contact-content">
-          <div className="contact-info">
+          <div ref={infoRef} className="contact-info fade-in-up">
             <h3 className="contact-info-title">Let's Talk</h3>
             <p className="contact-info-text">
               Have a project in mind? We'd love to hear from you. Send us a message 
@@ -123,7 +144,7 @@ const Contact = () => {
               </div>
             </div>
           </div>
-          <form className="contact-form" onSubmit={handleSubmit}>
+          <form ref={formRef} className="contact-form fade-in-up" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">Name</label>
               <input
